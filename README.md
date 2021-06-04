@@ -9,7 +9,7 @@ You need to place a file named "rawvertexes.txt" in which the path of the svg is
 ### On Linux
 ```console
 #Please make sure to install g++ and python3
-g++ TFT.cpp -o Main
+g++ VFT.cpp -o Main
 g++ Process.cpp -o Process
 Python FourierMath.py
 ./Process
@@ -18,7 +18,7 @@ Python FourierMath.py
 ### On Windows
 ```powershell
 #Please make sure to install g++ and python3
-g++ TFT.cpp -o Main.exe
+g++ VFT.cpp -o Main.exe
 g++ Process.cpp -o Process.exe
 Python FourierMath.py
 ./Porcess.exe
