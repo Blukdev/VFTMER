@@ -7,7 +7,7 @@ This is a branch of the BECBCT project and the most important part.
 ### Ready To Work
 You need to place a file named "rawvertexes.txt" in which the path of the svg is stored. (The path requirement of svg is exported by Adobe Illustrator)
 ### On Linux
-```posh
+```console
 #Please make sure to install g++ and python3
 g++ TFT.cpp -o Main
 g++ Process.cpp -o Process
