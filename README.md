@@ -1,5 +1,5 @@
 # VectorFourierrTansformer [![](https://img.shields.io/badge/License-GPL-green)](https://github.com/Blukdev/BECBCT/blob/main/LICENSE) ![](https://img.shields.io/badge/OS-Windows/Linux-blue) ![](https://img.shields.io/badge/Author-Lampese-success) ![](https://img.shields.io/badge/Collaborator-KCN-success)
-Convert svg to "set.txt" (for BECBCT)
+Convert svg to "set.txt" (for BECBCT).
 
 This is a branch of the BECBCT project and the most important part.
 
