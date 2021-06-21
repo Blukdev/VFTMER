@@ -11,18 +11,18 @@ If you want to use VFTER on the x86 Windows/Linux platform, you can [download it
 ### On Linux
 ```console
 #Please make sure to install g++ and python3
-g++ VFT.cpp -o Main
+g++ VFT.cpp -o VFT
 g++ Process.cpp -o Process
 Python FourierMath.py
 ./Process
-./Main
+./VFT
 ```
 ### On Windows
 ```powershell
 #Please make sure to install g++ and python3
-g++ VFT.cpp -o Main.exe
+g++ VFT.cpp -o VFT.exe
 g++ Process.cpp -o Process.exe
 Python FourierMath.py
 ./Porcess.exe
-./Main.exe
+./VFT.exe
 ```
