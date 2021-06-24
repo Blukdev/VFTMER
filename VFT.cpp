@@ -15,7 +15,7 @@ inline double ctheta(double t,int m,double fai){
 	return t*m+fai;
 }
 inline long long gcd(long long x,long long y){
-    while(y^=x^=y^=x%=y);
+    	while(y^=x^=y^=x%=y);
 	return x;
 }
 int main(){
