@@ -36,7 +36,7 @@ jsonxx::json sets={
 		}}
     }}
 };
-double speed=0.01;
+double speed,zoom;
 inline void init(){
 	ifstream filein("datas.txt");
 	int lines=0;
@@ -56,7 +56,7 @@ inline void init(){
 	fout.close();
 }
 int main(int argc,char *argv[]){
-	setx=atoi(argv[1]),sety=atoi(argv[2]),setz=atoi(argv[3]),speed=atof(argv[4]);
+	setx=atoi(argv[1]),sety=atoi(argv[2]),setz=atoi(argv[3]),speed=atof(argv[4]),zoom=atof(argv[5]);
 	init();
 	ifstream fin("in.txt");
 	int num,flag=1;
@@ -90,7 +90,7 @@ int main(int argc,char *argv[]){
 	TrigonometricFunction TF[num];
 	for(int i=1;i<=num;++i)TF[i-1]=move(TFA[i]);
 	auto Fix=InitialPhaseFix(TF,num);
-	auto Series=FourierSeriesBuilder(TF,num);
+	auto Series=FourierSeriesBuilder(TF,num,zoom);
 	auto Summon=SummonCommandBuilder(num+1);
 	for(int i=0;i<Fix.size();++i)
 		sets["Define"]["1"]["Define"].push_back(Fix[i]);

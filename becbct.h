@@ -40,7 +40,7 @@ string ArmorStandNameBuilder(int Num) {
 	} else Name+=char(LowLow+65);
 	return Name;
 }
-vector<string> FourierSeriesBuilder(TrigonometricFunction TriFunc[],int n) {
+vector<string> FourierSeriesBuilder(TrigonometricFunction TriFunc[],int n,double zoom) {
 	string name,namep,SelectorA,SelectorB;
 	vector<string>commands;
 	for(register int i=0; i<n; ++i) {
@@ -51,7 +51,7 @@ vector<string> FourierSeriesBuilder(TrigonometricFunction TriFunc[],int n) {
 		SelectorA="@e[type=armor_stand,name=\""+name+"\"]";
 		SelectorB="@e[type=armor_stand,name=\""+namep+"\"]";
 		ofa<<"execute "<<SelectorA<<" ~~~ tp @s ~~~ ~"<<roundt((-1)*TriFunc[i].omgea)<<"~";
-		ofb<<"execute "<<SelectorA<<" ~~~ tp "<<SelectorB<<" ^^^"<<roundt(TriFunc[i].alpha);
+		ofb<<"execute "<<SelectorA<<" ~~~ tp "<<SelectorB<<" ^^^"<<roundt(TriFunc[i].alpha*zoom);
 		commands.push_back(ofa.str());
 		commands.push_back(ofb.str());
 	}
