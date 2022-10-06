@@ -36,7 +36,7 @@ jsonxx::json sets={
 		}}
     }}
 };
-double speed,zoom;
+double omega_zoom=1,zoom;
 inline void init(){
 	ifstream filein("datas.txt");
 	int lines=0;
@@ -56,37 +56,22 @@ inline void init(){
 	fout.close();
 }
 int main(int argc,char *argv[]){
-	setx=atoi(argv[1]),sety=atoi(argv[2]),setz=atoi(argv[3]),speed=atof(argv[4]),zoom=atof(argv[5]);
+	setx=atoi(argv[1]),sety=atoi(argv[2]),setz=atoi(argv[3]),zoom=atof(argv[4]);
 	init();
 	ifstream fin("in.txt");
 	int num,flag=1;
 	fin>>num;
-	int positive[num+1];
-	long long lthetas[num+1],gcdt;
+	if(num>=10)omega_zoom=0.1;
+	else if(num>=100)omega_zoom=0.01;
 	TrigonometricFunction TFA[num+1];
 	double data1,data2;
 	for(int i=1;i<=num;++i){
 		fin>>data1>>data2;
 		TFA[i].alpha=sqrt(data1*data1+data2*data2);
-		TFA[i].fai=atan2(data2,data1);
+		TFA[i].phi=atan2(data2,data1);
 	}
 	fin.close();
-	for(int i=1;i<=num;++i){
-		double theta=ctheta(speed,((i+1)/2)*((i%2==0)?-1:1),TFA[i].fai);
-		positive[i]=theta>0?1:theta<0?-1:0;
-		lthetas[i]=(long long)(fabs(theta-ctheta(2*speed,((i+1)/2)*((i%2==0)?-1:1),TFA[i].fai))*1e8);
-		gcdt=(i==1?abs(lthetas[i]):gcd(gcdt,abs(lthetas[i])));
-	}
-	for(int i=1;i<=num;++i)TFA[i].omgea=(lthetas[i]*1.0)/(gcdt*1.0)*(positive[i]*1.0);
-	while(flag){
-		flag=0;
-		for(int i=1;i<=num;++i)
-			if(TFA[i].omgea>10){
-				for(int i=1;i<=num;i++)TFA[i].omgea/=10.0;
-				flag=1;
-				break;
-			}
-	}
+	for(int i=1;i<=num;++i)TFA[i].omega=(((i+1)/2)*((i%2==0)?-1:1))*omega_zoom;
 	TrigonometricFunction TF[num];
 	for(int i=1;i<=num;++i)TF[i-1]=move(TFA[i]);
 	auto Fix=InitialPhaseFix(TF,num);
