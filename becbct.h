@@ -6,6 +6,7 @@
 #include<iomanip>
 #include<iostream>
 #include<vector>
+#include<sstream>
 #define roundt(x) round(x*100)/100.0
 using namespace std;
 struct TrigonometricFunction {
@@ -40,7 +41,7 @@ string ArmorStandNameBuilder(int Num) {
 	} else Name+=char(LowLow+65);
 	return Name;
 }
-vector<string> FourierSeriesBuilder(TrigonometricFunction (&TriFunc)[],int n,double zoom) {
+vector<string> FourierSeriesBuilder(TrigonometricFunction TriFunc[],int n,double zoom) {
 	string name,namep,SelectorA,SelectorB;
 	vector<string>commands;
 	for(register int i=0; i<n; ++i) {
@@ -57,7 +58,7 @@ vector<string> FourierSeriesBuilder(TrigonometricFunction (&TriFunc)[],int n,dou
 	}
 	return commands;
 }
-vector<string> InitialPhaseFix(TrigonometricFunction (&TriFunc)[],int n) {
+vector<string> InitialPhaseFix(TrigonometricFunction TriFunc[],int n) {
 	string name,Selector;
 	vector<string>commands;
 	for(register int i=0; i<n; ++i) {
