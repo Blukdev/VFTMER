@@ -9,7 +9,6 @@
 #include<vector>
 #include<sstream>
 
-#define pi 314.1592653589793238
 using namespace std;
 struct TrigonometricFunction {
     double alpha, omega, phi;
@@ -72,7 +71,7 @@ vector <string> InitialPhaseFix(TrigonometricFunction TriFunc[], int n) {
         Selector = "@e[type=armor_stand,name=\"" + name + "\"]";
         commands.push_back("execute " + Selector + " ~~~ tp @s ~~~ 0 0");
         ofs << "execute " << Selector << " ~~~ tp @s ~~~ ~"
-            << round(TriFunc[i].phi * (-pi) / 180.0) / 100.0 << "~";
+            << round(TriFunc[i].phi * (-18000) / 3.14159265358979) / 100.0 << "~";
         commands.push_back(ofs.str());
     }
     return commands;
